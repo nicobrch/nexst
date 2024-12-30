@@ -22,8 +22,16 @@ export async function login(prevState: any, formData: FormData) {
     return { ...prevState, errors: data.error.flatten().fieldErrors };
   }
 
-  const res = await fetch(`${api}/login`);
+  const res = await fetch(`${api}/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data.data),
+  });
+
   const json = await res.json();
+  console.log(json);
 
   if (!res.ok) {
     return { ...prevState, errors: { api: json.message } };
@@ -64,7 +72,14 @@ export async function register(prevState: any, formData: FormData) {
     return { ...prevState, errors: data.error.flatten().fieldErrors };
   }
 
-  const res = await fetch(`${api}/login`);
+  const res = await fetch(`${api}/auth/register`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data.data),
+  });
+
   const json = await res.json();
 
   if (!res.ok) {
