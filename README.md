@@ -15,6 +15,7 @@ This is a monorepo starter template for full-stack typescript web development us
 - 🐱 NestJs
 - 🔐 Auth & Roles
 - 🧪 Jest
+- ✍️ SQLite & TypeORM
 
 ## Start developing
 
