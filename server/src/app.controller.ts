@@ -37,4 +37,10 @@ export class AppController {
   getProfile(@Request() req) {
     return req.user;
   }
+
+  @Public()
+  @Post('auth/register')
+  async register(@Request() req) {
+    return this.authService.register(req.body);
+  }
 }
