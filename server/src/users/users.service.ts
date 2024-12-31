@@ -19,7 +19,7 @@ export class UsersService {
     return this.usersRepository.findOneBy({ id });
   }
 
-  findOneByMail(email: string): Promise<User | null> {
+  findByEMail(email: string): Promise<User | null> {
     return this.usersRepository.findOneBy({ email });
   }
 

@@ -12,8 +12,8 @@ export class AuthService {
   ) {}
 
   async validateUser(email: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOneByMail(email);
-    if (hashCompare(pass, user.password)) {
+    const user = await this.usersService.findByEMail(email);
+    if (user && hashCompare(pass, user.password)) {
       const { password, ...result } = user;
       return result;
     }
@@ -33,5 +33,17 @@ export class AuthService {
 
   async register(data: User) {
     return this.usersService.create(data);
+  }
+
+  async loginOsu(data: {
+    accessToken: string;
+    refreshToken: string;
+  }): Promise<any> {
+    const user = await fetch('https://osu.ppy.sh/api/v2/me', {
+      headers: {
+        Authorization: `Bearer ${data.accessToken}`,
+      },
+    }).then((res) => res.json());
+    return user;
   }
 }

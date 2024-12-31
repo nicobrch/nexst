@@ -2,7 +2,7 @@
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-oauth2';
 import { Injectable } from '@nestjs/common';
-import { AuthService } from './auth.service';
+import { AuthService } from '../auth.service';
 
 @Injectable()
 export class OsuStrategy extends PassportStrategy(Strategy, 'osu') {
