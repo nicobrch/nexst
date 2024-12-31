@@ -4,6 +4,7 @@ import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { Public } from './auth/constants';
 import { AppService } from './app.service';
+import { OsuAuthGuard } from './auth/osu-auth.guard';
 
 @Controller()
 export class AppController {
@@ -42,5 +43,19 @@ export class AppController {
   @Post('auth/register')
   async register(@Request() req) {
     return this.authService.register(req.body);
+  }
+
+  @Public()
+  @UseGuards(OsuAuthGuard)
+  @Get('auth/osu')
+  async loginOsu() {
+    // Redirects to osu! for OAuth
+  }
+
+  @Public()
+  @UseGuards(OsuAuthGuard)
+  @Get('auth/osu/callback')
+  async callbackOsu(@Request() req) {
+    return this.authService.loginOsu(req.user);
   }
 }
