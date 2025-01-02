@@ -8,6 +8,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 import { User } from './users/user.entity';
+import { AuthController } from './auth/auth.controller';
 
 @Module({
   imports: [
@@ -21,7 +22,7 @@ import { User } from './users/user.entity';
       synchronize: true,
     }),
   ],
-  controllers: [AppController],
+  controllers: [AppController, AuthController],
   providers: [
     AppService,
     {
