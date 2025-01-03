@@ -1,5 +1,5 @@
-import { AppBreadcrumb } from "./app-breadcrumb";
-import { SidebarTrigger } from "./ui/sidebar";
+import { AppBreadcrumb } from "@/components/app/app-breadcrumb";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
 export function AppTopbar() {
   return (
